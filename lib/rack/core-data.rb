@@ -97,7 +97,16 @@ module Rack
           end
         end
 
-        create_table unless table_exists?
+        if table_exists?
+          missing_columns = schema.columns.reject{|c| columns.include?(c[:name])}
+          db.alter_table table_name do
+            missing_columns.each do |options|
+              add_column options.delete(:name), options.delete(:type), options
+            end
+          end
+        else
+          create_table
+        end
       end
 
       klass.send :define_method, :validate do
@@ -150,7 +159,7 @@ module Rack
             {errors: record.errors}.to_json
           end
         end
-        
+
         get "/#{klass.table_name}/:id/?" do
           record = klass[params[:id]] or halt 404
           {entity.name.downcase => record}.to_json
@@ -166,7 +175,7 @@ module Rack
             {errors: record.errors}.to_json
           end
         end
-        
+
         delete "/#{klass.table_name}/:id/?" do
           record = klass[params[:id]] or halt 404
           if record.destroy
