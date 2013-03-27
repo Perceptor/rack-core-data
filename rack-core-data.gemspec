@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = "Rack::CoreData"
   s.description = "Automatically generate REST APIs for Core Data models."
 
-  s.add_development_dependency "rspec", "~> 0.6.1"
-  s.add_development_dependency "rake",  "~> 0.9.2"
+  s.add_development_dependency "rspec", "~> 0.6"
+  s.add_development_dependency "rake",  "~> 0.9"
 
   s.add_dependency "rack", "~> 1.4"
   s.add_dependency "rack-contrib", "~> 1.1"
