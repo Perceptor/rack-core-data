@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "rack/core-data/version"
 
 Gem::Specification.new do |s|
   s.name        = "rack-core-data"
@@ -8,12 +7,10 @@ Gem::Specification.new do |s|
   s.email       = "m@mattt.me"
   s.homepage    = "http://mattt.me"
   s.license     = "MIT"
-  s.version     = Rack::CoreData::VERSION
+  s.version     = "0.3.1"
   s.platform    = Gem::Platform::RUBY
   s.summary     = "Rack::CoreData"
   s.description = "Automatically generate REST APIs for Core Data models."
-
-  s.add_development_dependency "rake",  "~> 0.9"
 
   s.add_dependency "rack", "~> 1.4"
   s.add_dependency "rack-contrib", "~> 1.1"
@@ -22,6 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency "sinatra-param", "~> 0.1"
   s.add_dependency "sequel", "~> 3.37"
   s.add_dependency "activesupport", ">= 3.0"
+
+  s.add_development_dependency "rake"
 
   s.files         = Dir["./**/*"].reject { |file| file =~ /\.\/(bin|example|log|pkg|script|spec|test|vendor)/ }
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
