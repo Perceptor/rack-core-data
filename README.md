@@ -1,7 +1,7 @@
 # Rack::CoreData
 **Automatically generate REST APIs for Core Data models**
 
-> This is still in early stages of development, so proceed with caution when using this in a production application. Any bug reports, feature requests, or general feedback at this point would be greatly appreciated.
+> This project is being deprecated in favor of splitting the functionality across [Rack::Scaffold](https://github.com/mattt/rack-scaffold) & [core_data](https://github.com/mattt/core_data). Follow [Helios](https://github.com/helios-framework/helios) for updates about this and all related project.
 
 <table>
   <thead><tr>
