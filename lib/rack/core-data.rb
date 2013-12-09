@@ -138,14 +138,14 @@ module Rack
               "#{klass.table_name}" => klass.limit(params[:per_page], (params[:page] - 1) * params[:per_page]),
               page: params[:page],
               total: klass.count
-            }.to_json
+            }.to_json(:except=>[:deviceToken])
           else
             param :limit, Integer, default: 100, in: (1..100)
             param :offset, Integer, default: 0, min: 0
 
             {
               "#{klass.table_name}" => klass.limit(params[:limit], params[:offset])
-            }.to_json
+            }.to_json(:except=>[:deviceToken])
           end
         end
 
@@ -162,7 +162,7 @@ module Rack
 
         get "/#{klass.table_name}/:id/?" do
           record = klass[params[:id]] or halt 404
-          {entity.name.downcase => record}.to_json
+          {entity.name.downcase => record}.to_json(:except=>[:deviceToken])
         end
 
         put "/#{klass.table_name}/:id/?" do
